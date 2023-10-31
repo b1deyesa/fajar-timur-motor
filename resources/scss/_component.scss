@@ -152,25 +152,39 @@ nav .container a::after {
   rotate: 45deg;
   background-color: $gray;
 }
-nav .container a.home {
+nav .container a:nth-child(1) {
   padding-right: 1em;
   padding-left: 8%;
-  z-index: 2;
+  z-index: 4;
   background-color: $white;
 }
-nav .container a.home::after {
-  content: '';
-  position: absolute;
-  aspect-ratio: 1/1;
-  right: -1.05em;
-  width: 2.1em;
-  rotate: 45deg;
+nav .container a:nth-child(1)::after {
+  border-top: 1px solid $gray;
+  border-right: 1px solid $gray;
   background-color: $white;
 }
-nav .container a.home i {
+nav .container a:nth-child(1) i {
   position: relative;
   font-size: 1.4em;
   z-index: 1;
+}
+nav .container a:nth-child(2) {
+  background-color: $light;
+  z-index: 3;
+}
+nav .container a:nth-child(2)::after {
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  background-color: $light;
+}
+nav .container a:nth-child(3) {
+  background-color: $gray;
+  z-index: 2;
+}
+nav .container a:nth-child(3)::after {
+  border-top: 1px solid #b0b0b0;
+  border-right: 1px solid #b0b0b0;
+  background-color: $gray;
 }
 
 /*

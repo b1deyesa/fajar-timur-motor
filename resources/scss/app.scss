@@ -165,7 +165,7 @@ body {
   display: flex;
   justify-content: center;
   width: 19em;
-  padding: 2em;
+  padding: 1.4em 2em;
   z-index: 1;
   background-color: $white;
   box-shadow: 0 0 10px #00000040;
@@ -174,12 +174,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1em;
   width: 100%;
 }
 .sidebar .container .top {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1.5em;
 }
 .sidebar .container .top .profile {
   display: flex;
@@ -188,10 +189,11 @@ body {
   gap: 1em;
 }
 .sidebar .container .top .profile i {
-  font-size: 10em;
+  font-size: 7em;
 }
 .sidebar .container .top .profile a {
   color: $light-blue;
+  font-size: .9em;
 }
 .sidebar .container .top .menu {
   display: flex;

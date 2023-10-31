@@ -1,0 +1,163 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 
+ |-----------------------
+ |  Font Size
+ |-----------------------
+ */
+h1    { font-size: 3.0em; }
+h2    { font-size: 2.5em; }
+h3    { font-size: 2.0em; }
+h4    { font-size: 1.8em; }
+h5    { font-size: 1.5em; }
+h6    { font-size: 1.3em; }
+p     { font-size: 1.0em; }
+small { font-size: 0.8em; }
+
+/* 
+ |-----------------------
+ |  Font Weight
+ |-----------------------
+ */
+h1    { font-family: 'Roboto Bold', sans-serif; }
+h2    { font-family: 'Roboto Bold', sans-serif; }
+h3    { font-family: 'Roboto Bold', sans-serif; }
+h4    { font-family: 'Roboto Bold', sans-serif; }
+h5    { font-family: 'Roboto Bold', sans-serif; }
+h6    { font-family: 'Roboto Bold', sans-serif; }
+b     { font-family: 'Roboto Bold', sans-serif; }
+
+/* 
+ |-----------------------
+ |  Color
+ |-----------------------
+ */
+$white      : #FFFFFF;
+$light      : #EEEEEE;
+$gray       : #d4d3d3;
+$dark       : #333333;
+$black      : #000000;
+$yellow     : #EAEAA4;
+$red        : #BA3D4D;
+$blue       : #1C3D67;
+$green      : #599D02;
+$light-blue : #1F879D;
+$sky-blue   : #7492B4;
+$light-green: #71C506;
+
+/* 
+ |-----------------------
+ |  Required
+ |-----------------------
+ */
+span.required::after {
+  content: '*';
+  color: $red;
+}
+
+/* 
+ |-----------------------
+ |  Link Button
+ |-----------------------
+ */
+a.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9em;
+  text-decoration: none;
+  gap: .5em;
+  width: 100%;
+  padding: .5em 1.5em;
+  border-radius: 5em;
+  box-shadow: 0 3px 12px #00000040;
+  background-image: linear-gradient($white, $light);
+  color: $black;
+}
+a.button i {
+  font-size: 1.6em;
+  text-align: end;
+  width: 1.5em;
+}
+a.button label {
+  display: flex;
+  flex-direction: column;
+  gap: .4em;
+  width: 6em;
+}
+a.button label p {
+  font-weight: bolder;
+}
+a.button label small {
+  color: $dark;
+}
+a.button.logout {
+  background-image: linear-gradient($red, $red);
+  color: $white;
+}
+
+/* 
+ |-----------------------
+ |  Button
+ |-----------------------
+ */
+button {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  gap: .5em;
+  padding: .5em 1.5em;
+  border: none;
+  border-radius: 5em;
+}
+button.add {
+  background-color: $green;
+  color: $white;
+}
+button.create {
+  text-transform: uppercase;
+  background-color: $light-green;
+  color: $black;
+}
+button.update {
+  text-transform: uppercase;
+  background-color: $yellow;
+  color: $black;
+}
+button.info {
+  text-transform: uppercase;
+  background-color: $sky-blue;
+  color: $white;
+}
+button.delete {
+  background-color: $red;
+  color: $white;
+}
+button.cancel {
+  border: 1px solid $gray;
+  background-color: $light;
+}
+
+/* 
+ |-----------------------
+ |  THead
+ |-----------------------
+ */
+thead.red th {
+  background-color: $red;
+  color: $white;
+}
+thead.blue th {
+  background-color: $blue;
+  color: $white;
+}
+thead.light-blue th {
+  background: $light-blue;
+  color: $white;
+}
+thead.yellow th {
+  background: $yellow;
+  color: $black;
+}

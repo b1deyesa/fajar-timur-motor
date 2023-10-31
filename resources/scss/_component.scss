@@ -1,0 +1,440 @@
+/*
+ |--------------------------
+ |  Alert
+ |--------------------------
+ */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #00000090;
+}
+.alert .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 20em;
+  border: 5px solid $blue;
+  background-color: $white;
+}
+.alert .container .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8em 1.4em;
+  background-color: $blue;
+}
+.alert .container .head .title {
+  color: $white;
+}
+.alert .container .head .close {
+  width: fit-content;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $white;
+}
+.alert .container .content {
+  padding: 2em;
+}
+.alert .container .content p {
+  line-height: 1.5em;
+}
+
+/*
+ |--------------------------
+ |  Label Input
+ |--------------------------
+ */
+.label .input {
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+}
+.label .input input,
+.label .input textarea,
+.label .input select {
+  font-family: inherit;
+  width: 20em;
+  padding: .3em .8em;
+}
+.label .input select::after {
+  content: 'hahah';
+}
+.label .input textarea {
+  resize: vertical;
+}
+.label .input small {
+  white-space: pre-wrap;
+  width: 100%;
+  color: $red;
+}
+.label .input .search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ |--------------------------
+ |  Header
+ |--------------------------
+ */
+header {
+  display: flex;
+  justify-content: center;
+  padding: 1.5em 0;
+  min-height: 10vh;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+header .container .banner {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+header .container .banner .logo {
+  width: 3.8em;
+}
+header .container .banner .title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: $white;
+}
+header .container .side {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+/*
+ |--------------------------
+ |  Navigation
+ |--------------------------
+ */
+nav {
+  position: relative;
+  min-height: 6vh;
+  z-index: 2;
+  box-shadow: 0 0 15px #00000020;
+  background-image: linear-gradient(#EFEFEF, #d3e7fe );
+}
+nav .container {
+  display: flex;
+  min-height: inherit;
+}
+nav .container a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: .8em 2em .8em 4em;
+  box-shadow: 5px 0 5px #00000010;
+  background-color: $gray;
+  color: $black;
+}
+nav .container a::after {
+  content: '';
+  position: absolute;
+  aspect-ratio: 1/1;
+  right: -1.05em;
+  width: 2.1em;
+  rotate: 45deg;
+  background-color: $gray;
+}
+nav .container a.home {
+  padding-right: 1em;
+  padding-left: 8%;
+  z-index: 2;
+  background-color: $white;
+}
+nav .container a.home::after {
+  content: '';
+  position: absolute;
+  aspect-ratio: 1/1;
+  right: -1.05em;
+  width: 2.1em;
+  rotate: 45deg;
+  background-color: $white;
+}
+nav .container a.home i {
+  position: relative;
+  font-size: 1.4em;
+  z-index: 1;
+}
+
+/*
+ |--------------------------
+ |  Table
+ |--------------------------
+ */
+.table {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  min-height: 84vh;
+  padding: 4em;
+}
+.table > .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 70em;
+  border-radius: 1em 1em 0 0;
+  box-shadow: 1px 1px 10px #00000020;
+}
+.table .container .heading {
+  padding: 1em 2em;
+  border-radius: 1em 1em 0 0;
+  background-color: $dark;
+  color: $white;
+}
+.table .container .heading p {
+  font-weight: bold;
+}
+.table .container hr {
+  width: 100%;
+}
+.table .container .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
+  background-color: $light;
+}
+.table .container .content .navigation {
+  display: flex;
+  gap: 1em;
+}
+.table .container .content #myTable {
+  font-size: .9em;
+  border-collapse: collapse;
+  background-color: $white;
+}
+.table .container .content #myTable th {
+  font-family: 'Roboto Bold';
+  text-align: center;
+  vertical-align: middle;
+  padding: .8em 1em;
+  border: 1px solid $gray;
+}
+.table .container .content #myTable th.sorting::before,
+.table .container .content #myTable th.sorting::after {
+  display: none;
+}
+.table .container .content #myTable td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 4em;
+  padding: .5em .8em;
+  overflow: hidden;
+  border: 1px solid $gray;
+}
+.table .container .content .dataTables_filter input {
+  width: 20em;
+  background-color: $white;
+}
+.table .container .content .dataTables_filter,
+.table .container .content .dataTables_length {
+  margin: 0 0 1em;
+}
+.table .container .content .dataTables_paginate,
+.table .container .content .dataTables_info {
+  margin: 1em 0 0;
+}
+
+
+/*
+ |--------------------------
+ |  Edit
+ |--------------------------
+ */
+.edit {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  min-height: 84vh;
+  padding: 4em;
+}
+.edit > .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 32em;
+  border-radius: 1em 1em 0 0;
+  box-shadow: 1px 1px 10px #00000020;
+}
+.edit .container .heading {
+  padding: 1em 2em;
+  border-radius: 1em 1em 0 0;
+  background-color: $dark;
+  color: $white;
+}
+.edit .container .heading p {
+  font-weight: bold;
+}
+.edit .container hr {
+  width: 100%;
+}
+.edit .container .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
+  background-color: $light;
+}
+.edit .container .content .button {
+  display: flex;
+  justify-content: end;
+  gap: 1em;
+}
+.edit .container .content form {
+  width: 100%;
+}
+.edit .container .content form table {
+  width: 100%;
+}
+.edit .container .content form table tr td {
+  white-space: nowrap;
+  width: 100%;
+  padding: 1em .5em 0 0;
+}
+.edit .container .content form table tr td small {
+  line-height: 1.5em;
+  white-space: pre-wrap;
+}
+.edit .container .content form table tr td .navigation {
+  display: flex;
+  justify-content: center;
+  gap: .5em;
+  margin: 1em 0 0;
+}
+
+/*
+ |--------------------------
+ |  Modal Form
+ |--------------------------
+ */
+.modal-form {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
+  height: 100vh;
+  overflow: auto;
+  z-index: 100;
+  background-color: #00000090;
+}
+.modal-form > .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30em;
+  border-radius: 1.2em 1.2em 0 0;
+  background-color: $white;
+}
+.modal-form .container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .7em 2.5em;
+  border-radius: 1em 1em 0 0;
+  background-color: $blue;
+}
+.modal-form .container .header > p {
+  color: $white;
+}
+.modal-form .container .header > button {
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+  color: $white;
+}
+.modal-form .container form {
+  padding: 1.8em 2.5em;
+}
+.modal-form .container form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.modal-form .container form table tr td {
+  white-space: nowrap;
+  padding: .5em .5em .5em 0;
+  border: none;
+}
+.modal-form .container form table tr td .navigation {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  gap: .5em;
+  margin: 1em 0 0;
+}
+.modal-form .footer {
+  display: flex;
+}
+
+/*
+ |--------------------------
+ |  Modal Confirm
+ |--------------------------
+ */
+.modal-confirm {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #00000090;
+}
+.modal-confirm > .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 20em;
+  border-radius: 1.2em 1.2em 0 0;
+  background-color: $white;
+}
+.modal-confirm .container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8em 1.4em;
+  border-radius: 1em 1em 0 0;
+  background-color: $blue;
+}
+.modal-confirm .container .header p {
+  color: $white;
+}
+.modal-confirm .container .header button {
+  background-color: transparent;
+  color: $white;
+}
+.modal-confirm .container form {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  padding: 1.2em 1.4em;
+}
+.modal-confirm .container form p {
+  line-height: 1.5em;
+}

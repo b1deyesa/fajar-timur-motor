@@ -15,7 +15,7 @@
         @php $total = $transaksis->whereBetween('created_at', [today()->subDay($i)->toDateTimeString(), today()->subDay($i - 1)->toDateTimeString()])->sum('total'); @endphp
         <li>
             {{-- Bar Chart --}}
-            <span style="max-height: {{ ($total / 300000000) * 100}}%"></span>
+            <span style="max-height: {{ ($total / 20000000) * 100}}%"></span>
 
             {{-- Value --}}
             <small>Rp{{ number_format($total, 0, ',', '.') }}</small>

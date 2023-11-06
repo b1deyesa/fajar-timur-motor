@@ -10,6 +10,7 @@
     <tr class="term">
         <td colspan="3">
             <small>
+                <p><b>Jenis File</b> : .csv, xlx, xls</p>
                 <b>Kolom</b> : 
                 <ul>
                     <li>kode (text)<span class="required" /></li> 

@@ -8,18 +8,18 @@
     <title>Fajar Timur Motor</title>
     
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/scss/app.scss'])
-
+        
     {{-- Script --}}
     <script src="https://kit.fontawesome.com/4419d23bf4.js" crossorigin="anonymous"></script>
     <script src="{{ asset('jquery.min.js') }}"></script>
 
-    @livewireStyles
     @stack('css')
+    @livewireStyles
 </head>
 <body>
     {{ $slot }}
-
-    @livewireScripts
+    
     @stack('script')
+    @livewireScripts
 </body>
 </html>

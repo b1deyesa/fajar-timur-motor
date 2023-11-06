@@ -151,7 +151,7 @@ class Kasir extends Component
     {
         return $this->invoice = false;
     }
-    
+        
     public function render()
     {
         return view('livewire.kasir', [

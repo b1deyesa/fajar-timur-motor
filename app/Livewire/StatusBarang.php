@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Barang;
 use Livewire\Component;
 
 class StatusBarang extends Component
@@ -21,6 +22,8 @@ class StatusBarang extends Component
 
     public function render()
     {
-        return view('livewire.status-barang');
+        return view('livewire.status-barang', [
+            'barangs' => Barang::all()
+        ]);
     }
 }

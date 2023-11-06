@@ -1,53 +1,61 @@
 <x-dashboard>
-    <x-form :title="'Supplier - ' . $barang->nama">
+    <x-edit title="Barang - {{ $barang->nama }}" route="{{ route('barang.update', compact('gudang', 'barang')) }}">
+
+        {{-- Button --}}
         <x-slot:button>
             @livewire('delete-barang', compact('gudang', 'barang'))
         </x-slot:button>
-        <form method="POST" action="{{ route('barang.update', compact('gudang','barang')) }}">
-            @csrf
-            @method('PUT')
-            <table>
-                <tr>
-                    <td>Kode Barang</td>
-                    <td>:</td>
-                    <td><x-input type='text' :value="$barang->kode" :disabled="true" /></td>
-                </tr>
-                <tr>
-                    <td>Lokasi Barang</td>
-                    <td>:</td>
-                    <td>
-                        <x-input type="select" name="gudang_id">
-                            <option value="{{ $barang->gudang_id }}" selected disabled>[{{ $barang->gudang->kode }}] {{ $barang->gudang->nama }}</option>
-                            @foreach ($gudangs as $gudang)
-                                <option value="{{ $gudang->id }}">[{{ $gudang->kode }}] {{ $gudang->nama }}</option>
-                            @endforeach
-                        </x-input>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nama Barang</td>
-                    <td>:</td>
-                    <td> <x-input type='text' name='nama' placeholder="Nama Barang" :value="$barang->nama" /></td>
-                </tr>
-                <tr>
-                    <td>Merek</td>
-                    <td>:</td>
-                    <td><x-input type='text' name='merek' placeholder="Merek" :value="$barang->merek" /></td>
-                </tr>
-                <tr>
-                    <td>Harga Beli</td>
-                    <td>:</td>
-                    <td><x-input type='text' name='harga_beli' placeholder="Isi angka 0 bila belum diketahui" :value="$barang->harga_beli" /></td>
-                </tr>
-                <tr>
-                    <td>Deskripsi</td>
-                    <td>:</td>
-                    <td><small>{{ $barang->deskripsi }}</small></td>
-                </tr>
-                <tr>
-                    <td colspan="3"><button type="submit" class="update"><i class="fa-solid fa-pen"></i>Update</button></td>
-                </tr>
-            </table>
-        </form>
-    </x-form>
+
+        {{-- Slot --}}
+        <x-input
+            label="Kode Barang" 
+            type='text' 
+            :value="$barang->kode" 
+            :disabled="true"
+            :required="true" 
+            />
+        <x-input 
+            label="Lokasi Barang"
+            type="select" 
+            name="gudang_id">
+            <option value="{{ $gudang->id }}" disabled selected>[{{ $gudang->kode }}] {{ $gudang->nama }}</option>
+            @foreach ($gudangs as $gudang)
+                <option value="{{ $gudang->id }}">[{{ $gudang->kode }}] {{ $gudang->nama }}</option>
+            @endforeach
+        </x-input>
+        <x-input
+            label="Nama Barang" 
+            type='text' 
+            name='nama' 
+            placeholder='Nama Barang' 
+            :value="$barang->nama" 
+            :required="true" 
+            />
+        <x-input
+            label="Merek" 
+            type='text' 
+            name='merek' 
+            placeholder='Merek' 
+            :value="$barang->merek" 
+            />
+        <x-input
+            label="Harga Beli" 
+            type='text' 
+            name='harga_beli' 
+            placeholder='Isi angka 0 bila belum diketahui' 
+            :value="$barang->harga_beli" 
+            />
+        <x-input
+            label="Deskripsi" 
+            type='textarea' 
+            name='deskripsi' 
+            placeholder='Deskripsi' 
+            :value="$barang->deskripsi" 
+            />
+
+        {{-- Navigation --}}
+        <x-slot:navigation>
+            <button type="submit" class="update"><i class="fa-solid fa-pen"></i>Update</button>
+        </x-slot:navigation>
+    </x-edit>
 </x-dashboard>

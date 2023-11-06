@@ -6,7 +6,7 @@
     {{-- Table --}}
     <x-table title="Semua Transaksi" color="red">
         <x-slot:button>
-            <a href="{{ route('transaksi.report') }}">Cetak Laporan</a>
+            <a href="{{ route('transaksi.report') }}"><i class="fa-solid fa-print"></i>Cetak Laporan</a>
         </x-slot:button>
         <x-slot:head>
             <tr>
@@ -26,14 +26,14 @@
             <tr>
                 <td align="center">{{ $key + 1 }}</td>
                 <td align="center" style="min-width: 6em">{{ $transaksi->kode }}</td>
-                <td>{{ $transaksi->nama_pembeli }}</td>
-                <td>{{ $transaksi->metode_pembayaran }}</td>
-                <td>Rp {{ number_format($transaksi->harga_pengiriman, '2', ',', '.') }}</td>
-                <td>{{ $transaksi->agen_pengiriman }}</td>
+                <td>{{ $transaksi->nama_pembeli ?? '-' }}</td>
+                <td>{{ $transaksi->metode_pembayaran ?? '-' }}</td>
+                <td>{{ $transaksi->harga_pengiriman ? 'Rp ' . number_format($transaksi->harga_pengiriman, '2', ',', '.') : '-' }}</td>
+                <td>{{ $transaksi->agen_pengiriman ?? '-' }}</td>
                 <td align="center">{{ $transaksi->created_at->format('d/m/Y') }}</td>
                 <td>Rp {{ number_format($transaksi->total, '2', ',', '.') }}</td>
-                <td align="center">
-                    <a href="{{ route('detail-transaksi.index', compact('transaksi')) }}">Detail Transaksi</a>
+                <td align="center" class="action">
+                    <a href="{{ route('detail-transaksi.index', compact('transaksi')) }}" id="info"><i class="fa-solid fa-eye"></i>Detail Transaksi</a>
                 </td>
             </tr>
             @endforeach

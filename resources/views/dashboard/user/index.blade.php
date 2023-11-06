@@ -24,8 +24,8 @@
                 <td>{{ $user->nama }}</td>
                 <td>{{ $user->alamat }}</td>
                 <td>{{ $user->telp }}</td>
-                <td align="center">
-                    <a href="{{ route('user.edit', compact('user')) }}">Edit</a>
+                <td align="center" class="action">
+                    <a href="{{ route('user.edit', compact('user')) }}" id="edit"><i class="fa-solid fa-pen"></i>Edit</a>
                 </td>
             </tr>
             @endforeach

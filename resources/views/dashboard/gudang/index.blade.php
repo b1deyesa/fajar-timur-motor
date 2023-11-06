@@ -2,12 +2,12 @@
     
     {{-- Alert --}}
     <x-alert />
-
+    
     {{-- Table --}}
     <x-table title="Semua Gudang" color="red">
         <x-slot:button>
             @livewire('create-gudang')
-            @livewire('status-barang')
+            {{-- @livewire('status-barang') --}}
         </x-slot:button>
         <x-slot:head>
             <tr>
@@ -29,9 +29,9 @@
                 <td>{{ $gudang->alamat }}</td>
                 <td align="center">{{ $gudang->kapasitas }}</td>
                 <td align="center">{{ $gudang->kapasitas - $gudang->barangs->count() }}</td>
-                <td align="center">
-                    <a href="{{ route('gudang.edit', compact('gudang')) }}">Edit</a>
-                    <a href="{{ route('barang.index', compact('gudang')) }}">Lihat</a>
+                <td align="center" class="action">
+                    <a href="{{ route('gudang.edit', compact('gudang')) }}" id="edit"><i class="fa-solid fa-pen"></i>Edit</a>
+                    <a href="{{ route('barang.index', compact('gudang')) }}" id="info"><i class="fa-solid fa-eye"></i>Lihat</a>
                 </td>
             </tr>
             @endforeach

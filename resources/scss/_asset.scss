@@ -88,6 +88,7 @@ a.button label {
   width: 6em;
 }
 a.button label p {
+  white-space: nowrap;
   font-weight: bolder;
 }
 a.button label small {
@@ -111,6 +112,11 @@ button {
   padding: .5em 1.5em;
   border: none;
   border-radius: 5em;
+}
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  background-color: $gray !important;
 }
 button.add {
   background-color: $green;
@@ -138,6 +144,20 @@ button.delete {
 button.cancel {
   border: 1px solid $gray;
   background-color: $light;
+}
+
+a.edit {
+  background-color: $yellow;
+  color: $black;
+}
+a.info {
+  text-transform: uppercase;
+  background-color: $sky-blue;
+  color: $white;
+}
+a.delete {
+  background-color: $red;
+  color: $white;
 }
 
 /* 

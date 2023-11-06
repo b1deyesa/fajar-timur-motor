@@ -26,8 +26,8 @@
                     <td>{{ $supplier->nama }}</td>
                     <td>{{ $supplier->alamat }}</td>
                     <td>{{ $supplier->telp }}</td>
-                    <td align="center">
-                        <a href="{{ route('supplier.edit', compact('supplier')) }}">Edit</a>
+                    <td align="center" class="action">
+                        <a href="{{ route('supplier.edit', compact('supplier')) }}" id="edit"><i class="fa-solid fa-pen"></i>Edit</a>
                     </td>
                 </tr>
             @endforeach

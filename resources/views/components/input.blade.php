@@ -16,6 +16,19 @@
                 <small>{{ $message }}</small>
             @enderror
 
+        {{-- File --}}
+        @elseif ($type == 'file')
+            <input 
+                type="file" 
+                name="{{ $name }}"
+                wire:model="{{ $name }}"
+            >
+            @if (count($errors) > 0)
+                @foreach($errors->all() as $error)
+                    <small style="margin-left: 1em">{{ $error }}</small>
+                @endforeach     
+            @endif
+
         {{-- Select --}}
         @elseif ($type == 'select')
             <select name="{{ $name }}" wire:model.lazy="{{ $name }}">
@@ -29,12 +42,11 @@
         @elseif ($type == 'textarea')
             <textarea 
                 type="text" name="{{ $name }}" 
-                placeholder="{{ $placeholder }}" 
-                value="{{ old($name, $value) }}" 
+                placeholder="{{ $placeholder }}"
                 autocomplete="off" 
                 wire:model="{{ $name }}" 
                 @if($disabled) disabled @endif 
-            ></textarea>
+            >{{ old($name, $value) }}</textarea>
             @error($name)
                 <small>{{ $message }}</small>
             @enderror

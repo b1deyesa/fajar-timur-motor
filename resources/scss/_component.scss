@@ -216,6 +216,7 @@ nav .container a:nth-child(3)::after {
 .table .container .heading p {
   font-weight: bold;
 }
+
 .table .container hr {
   width: 100%;
 }
@@ -229,6 +230,15 @@ nav .container a:nth-child(3)::after {
 .table .container .content .navigation {
   display: flex;
   gap: 1em;
+}
+.table .container .content .navigation a {
+  display: inline-flex;
+  gap: .5em;
+  text-decoration: none;  
+  padding: .5em 1.5em;
+  border-radius: 5em;
+  background-color: $light-blue;
+  color: $white;
 }
 .table .container .content #myTable {
   font-size: .9em;
@@ -254,6 +264,30 @@ nav .container a:nth-child(3)::after {
   padding: .5em .8em;
   overflow: hidden;
   border: 1px solid $gray;
+}
+.table .container .content #myTable td.action {
+  text-overflow: unset;
+  max-width: 10em;
+  overflow: visible;
+}
+.table .container .content #myTable td.action a {
+  display: inline-flex;
+  gap: .2em;
+  text-decoration: none;
+  padding: .3em 1em;
+  border-radius: 5em;
+}
+.table .container .content #myTable td.action a#edit {
+  background-color: $yellow;
+  color: $dark;
+}
+.table .container .content #myTable td.action a#info {
+  background-color: $sky-blue;
+  color: $white;
+}
+.table .container .content #myTable td.action a#delete {
+  background-color: $red;
+  color: $white;
 }
 .table .container .content .dataTables_filter input {
   width: 20em;
@@ -398,6 +432,24 @@ nav .container a:nth-child(3)::after {
   text-transform: uppercase;
   gap: .5em;
   margin: 1em 0 0;
+}
+.modal-form .container form table tr.term small {
+  white-space: wrap;
+  text-align: start;
+  margin: 0;
+}
+.modal-form .container form table tr.term small ul {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  margin: .8em 0 2em;
+}
+.modal-form .container form table tr.term small ul li {
+  list-style-type: disc;
+  margin: 0 0 0 1.5em;
+}
+.modal-form .container form table tr.term hr {
+  border: 1px solid $blue;
 }
 .modal-form .footer {
   display: flex;

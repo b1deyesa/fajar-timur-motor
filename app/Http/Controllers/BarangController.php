@@ -6,9 +6,11 @@ use App\Models\Log;
 use App\Models\Barang;
 use App\Models\Gudang;
 use Illuminate\Http\Request;
+use App\Imports\BarangImport;
 use App\Models\SupplierBarang;
 use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BarangController extends Controller
 {
@@ -70,7 +72,24 @@ class BarangController extends Controller
      */
     public function update(Request $request, Gudang $gudang, Barang $barang)
     {
-       
+        // Validate data
+        $request->validate([
+            'nama' => 'required',
+            'harga_beli' => 'required|numeric',
+        ], [
+            'nama.required' => 'Nama barang tidak boleh kosong',
+            'harga_beli.required' => 'Harga beli tidak boleh kosong',
+            'harga_beli.numeric' => 'Harga beli harus berupa angka',
+        ]);
+
+        // Update data
+        $barang->update($request->all());
+
+        // Log
+        Log::create([
+            'user_id' => Auth::id(),
+            'task' => 'Update data Barang ('. $barang->kode .')'
+        ]);
 
         return redirect()->route('barang.index', compact('gudang'))->with('message','Data Barang ('. $barang->kode .') Berhasil di Update');
     }

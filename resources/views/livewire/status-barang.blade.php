@@ -1,22 +1,35 @@
-<div class="modal">
-    {{-- Button --}}
-    <button wire:click="open" class="info"><i class="fa-regular fa-clipboard"></i></i>Status Barang</button>
+{{-- CSS --}}
+@push('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@endpush
 
-    {{-- Modal --}}
-    @if ($modal)
-        <section class="modal-form">
-            <div class="container">
-                <div class="head">
-                    <p class="title">Status Barang</p>
-                    <button wire:click="close" class="close">X</button>
-                </div>
-                <div class="content">
-                    <select wire:modal.lazy="data">
-                        <option value="Halo">Halo</option>
-                    </select>
-                    {{ $data }}
-                </div>
-            </div>
-        </section>
-    @endif
-</div>
+<x-modal :modal="$modal" title="Status Barang" color="info">
+    
+    {{-- Label --}}
+    <x-slot:label>
+        Status Barang
+    </x-slot:label>
+
+    {{-- Slot --}}
+    <tr>
+        <td colspan="3">
+            <select class="select" name="state" style="width: 100%">
+                <option selected disabled>Silahkan dicari</option>
+                @foreach ($barangs as $barang)
+                    <option value="{{ $barang->id }}">[{{ $barang->kode }}] {{ $barang->nama }}</option>
+                @endforeach
+            </select>
+        </td>
+    </tr>
+</x-modal>
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.select').select2();
+        });
+    </script>
+@endpush

@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class DeleteBarang extends Component
 {
-    public $modal = false;
     public Barang $barang;
     public Gudang $gudang;
+    public $modal = false;
 
     public function open()
     {

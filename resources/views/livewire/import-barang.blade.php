@@ -10,7 +10,7 @@
     <tr class="term">
         <td colspan="3">
             <small>
-                <p><b>Jenis File</b> : .csv, xlx, xls</p>
+                <p><b>Jenis File</b> : Comma Separated Values (.csv)</p>
                 <b>Kolom</b> : 
                 <ul>
                     <li>kode (text)<span class="required" /></li> 

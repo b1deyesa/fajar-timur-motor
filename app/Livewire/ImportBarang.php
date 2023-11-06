@@ -31,10 +31,10 @@ class ImportBarang extends Component
     public function submit()
     {
         $this->validate([
-            'file' => 'required|mimes:csv,xlx,xls'
+            'file' => 'required|mimes:png,jpg,jpeg,csv,txt|max:2048'
         ], [
             'file.required' => 'File perlu di-upload',
-            'file.mimes' => 'Hanya untuk file .csv, .xlx, dan xls'
+            'file.mimes' => 'Hanya file .csv yang dapat di-import'
         ]);
         
         // Import function

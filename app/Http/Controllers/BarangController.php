@@ -101,4 +101,13 @@ class BarangController extends Controller
     {
         //
     }
+
+    public function info(Request $request)
+    {
+        $barangs = Barang::find($request->barang);
+
+        return view('dashboard.barang.info', [
+            'barangs' => $barangs
+        ]);
+    }
 }

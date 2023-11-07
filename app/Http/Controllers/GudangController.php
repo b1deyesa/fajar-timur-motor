@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Log;
 use App\Models\Gudang;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class GudangController extends Controller
     public function index()
     {
         return view('dashboard.gudang.index', [
-            'gudangs' => Gudang::all()
+            'gudangs' => Gudang::all(),
+            'barangs' => Barang::all()
         ]);
     }
 

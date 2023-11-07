@@ -181,3 +181,29 @@ thead.yellow th {
   background: $yellow;
   color: $black;
 }
+
+/* 
+ |-----------------------
+ |  TD Action
+ |-----------------------
+ */
+td.action a {
+  display: inline-flex;
+  align-items: center;
+  gap: .2em;
+  text-decoration: none;
+  padding: .2em 1em;
+  border-radius: 5em;
+}
+td.action a#edit {
+  background-color: $yellow;
+  color: $dark;
+}
+td.action a#info {
+  background-color: $sky-blue;
+  color: $white;
+}
+td.action a#delete {
+  background-color: $red;
+  color: $white;
+}

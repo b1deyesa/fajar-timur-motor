@@ -49,7 +49,7 @@ class CreateGudang extends Component
             'kode' => $kode,
             'nama' => $this->value['nama'],
             'alamat' => $this->value['alamat'],
-            'kapasitas' => $this->value['kapasitas'],
+            'kapasitas' => (int)$this->value['kapasitas'],
         ]);
 
         // Log

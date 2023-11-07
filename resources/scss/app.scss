@@ -438,6 +438,61 @@ body {
   margin: 1.5em 0 0;
 }
 
+/*
+ |--------------------------
+ |  Barang Info
+ |--------------------------
+ */
+
+.barang-info {
+display: flex;
+justify-content: center;
+padding: 2em;
+}
+.barang-info .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  max-width: 30em;
+}
+.barang-info .container .title {
+  text-align: center;
+  color: $white;
+  text-shadow: 2px 2px 8px #00000020;
+}
+.barang-info .container .card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em 2em 1em;
+  border-radius: .5em;
+  background-color: $light;
+}
+.barang-info .container .card .card-title {
+  color: $black;
+}
+.barang-info .container .card table tr td {
+  line-height: 1.5em;
+  padding: .3em;
+  color: $dark;
+}
+.barang-info .container .card table tr td a {
+  text-decoration: none;
+  color: $light-blue;
+}
+.barang-info .container .card table tr td .stok {
+  font-size: 1em;
+  color: $light-blue;
+}
+.barang-info .container .card table tr td:first-child {
+  font-family: 'Roboto Bold';
+  white-space: nowrap;
+  padding-left: 0;
+}
+.barang-info .container .card table tr td.action {
+  text-align: end;
+}
+
 #select {
   width: 100%;
   margin: 0 0 1em;

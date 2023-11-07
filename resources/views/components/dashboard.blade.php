@@ -1,5 +1,5 @@
 <x-layout>
     <x-header />
-    <x-navbar />
+    <x-navbar menu="{{ $navmenu }}" />
     {{ $slot }}
 </x-layout>

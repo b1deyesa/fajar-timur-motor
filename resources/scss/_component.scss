@@ -270,25 +270,6 @@ nav .container a:nth-child(3)::after {
   max-width: 10em;
   overflow: visible;
 }
-.table .container .content #myTable td.action a {
-  display: inline-flex;
-  gap: .2em;
-  text-decoration: none;
-  padding: .3em 1em;
-  border-radius: 5em;
-}
-.table .container .content #myTable td.action a#edit {
-  background-color: $yellow;
-  color: $dark;
-}
-.table .container .content #myTable td.action a#info {
-  background-color: $sky-blue;
-  color: $white;
-}
-.table .container .content #myTable td.action a#delete {
-  background-color: $red;
-  color: $white;
-}
 .table .container .content .dataTables_filter input {
   width: 20em;
   background-color: $white;
@@ -301,7 +282,6 @@ nav .container a:nth-child(3)::after {
 .table .container .content .dataTables_info {
   margin: 1em 0 0;
 }
-
 
 /*
  |--------------------------

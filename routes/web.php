@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
   Route::get('logout', [AuthController::class, 'logout'])->name('logout');
   Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard.index');
   Route::get('dashboard/transaksi/report', [TransaksiController::class, 'report'])->name('transaksi.report');
+  Route::post('dashboard/gudang/status/barang', [BarangController::class, 'info'])->name('barang.info');
   
   Route::resource('dashboard/gudang', GudangController::class);
   Route::resource('dashboard/supplier', SupplierController::class);

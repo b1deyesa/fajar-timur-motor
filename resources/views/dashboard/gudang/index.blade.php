@@ -1,5 +1,9 @@
 <x-dashboard>
-    
+    @push('css')
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @endpush
+
     {{-- Alert --}}
     <x-alert />
     
@@ -7,7 +11,37 @@
     <x-table title="Semua Gudang" color="red">
         <x-slot:button>
             @livewire('create-gudang')
-            {{-- @livewire('status-barang') --}}
+            {{-- Status Barang --}}
+            <button id="btn-status-barang" class="info">Status Barang</button>
+            <section id="status-barang" class="modal-form">
+                <div class="container">
+                    <div class="header">
+                        <p class="title">Status Barang</p>
+                        <button id="close-status-barang" class="close">X</button>
+                    </div>
+                    <form method="POST" action="{{ route('barang.info') }}">
+                        @csrf
+                        <table>
+                            <tr>
+                                <td colspan="3">
+                                    <select class="select" name="barang[]" style="width: 100%" multiple="multiple">
+                                        @foreach ($barangs as $barang)
+                                            <option value="{{ $barang->id }}">[{{ $barang->kode }}] {{ $barang->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="navigation">
+                                        <button type="submit">Cari</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </section>
         </x-slot:button>
         <x-slot:head>
             <tr>
@@ -37,4 +71,30 @@
             @endforeach
         </x-slot:body>
     </x-table>
+
+    @push('script')   
+        <script>
+            if(performance.navigation.type == 2){
+                location.reload(true);
+            }
+            $("#status-barang").hide();
+            $(document).ready(function(){
+                $("#btn-status-barang").click(function(){
+                    $("#status-barang").toggle();
+                });
+                $("#close-status-barang").click(function(){
+                    $("#status-barang").toggle();
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('.select').select2({
+                    placeholder: "Pilih barang",
+                });
+            });
+        </script>
+    @endpush
 </x-dashboard>
+
+

@@ -108,6 +108,12 @@ class Kasir extends Component
     
     public function submit()
     {
+        $this->validate([
+            'data_pembeli.harga_pengiriman' => 'numeric'
+        ], [
+            'data_pembeli.harga_pengiriman.numeric' => 'Harga harus berupa angka'
+        ]);
+        
         // Generate kode
         $kode = 'TR-' . sprintf('%07d', Transaksi::all()->max('id') + 1);
         

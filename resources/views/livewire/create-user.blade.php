@@ -8,6 +8,13 @@
 
     {{-- Slot --}}
     <x-input 
+        label="ID" 
+        type='text' 
+        name='value.username' 
+        placeholder='ID Admin' 
+        :required="true" 
+        />
+    <x-input 
         label="Nama Admin" 
         type='text' 
         name='value.nama' 
@@ -26,6 +33,15 @@
         name='value.telp' 
         placeholder='No. Telp' 
         />
+    <x-input 
+        label="Role"
+        type="select" 
+        name="value.role"
+        :required="true">
+        <option value="" selected>Pilih</option>
+        <option value="Admin">Admin</option>
+        <option value="Kasir">Kasir</option>
+    </x-input>
     <x-input 
         label="Password" 
         type='password' 

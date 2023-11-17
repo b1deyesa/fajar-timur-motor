@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('barang_id')->constrained('barangs')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('jumlah')->default(1);
             $table->string('harga_jual')->default(0);
-            $table->string('diskon')->default(0);
+            $table->text('deskripsi')->nullable();
         });
     }
 

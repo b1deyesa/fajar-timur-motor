@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailTransaksi;
+use App\Models\Log;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\DetailTransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class DetailTransaksiController extends Controller
 {
@@ -48,17 +50,41 @@ class DetailTransaksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DetailTransaksi $detailTransaksi)
+    public function edit(Transaksi $transaksi, DetailTransaksi $detailTransaksi)
     {
-        //
+        return view('dashboard.detail-transaksi.edit', [
+            'detail_transaksi' => $detailTransaksi,
+            'transaksi' => $transaksi
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DetailTransaksi $detailTransaksi)
-    {
-        //
+    public function update(Request $request, Transaksi $transaksi, DetailTransaksi $detailTransaksi)
+    {        
+        // Validate data
+        $request->validate([
+            'jumlah' => 'required|numeric',
+            'harga_jual' => 'required|numeric',
+        ], [
+            'jumlah.required' => 'Quantity tidak boleh kosong',
+            'harga_jual.required' => 'Harga jual tidak boleh kosong',
+            'jumlah.numeric' => 'Quantity harus berupa angka',
+            'harga_jual.numeric' => 'Harga jual harus berupa angka',
+        ]);
+
+        // Update data
+        $detailTransaksi->update($request->all());
+        $transaksi->update(['total' => $transaksi->sum() + $transaksi->harga_pengiriman]);
+        
+        // Log
+        Log::create([
+            'user_id' => Auth::id(),
+            'task' => 'Update data Transaksi ('. $transaksi->kode .')'
+        ]);
+
+        return redirect()->route('detail-transaksi.index', compact('transaksi', 'detailTransaksi'))->with('message','Data Transaksi ('. $transaksi->kode .') Berhasil di Update');
     }
 
     /**

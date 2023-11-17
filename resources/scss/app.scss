@@ -481,7 +481,8 @@ padding: 2em;
   color: $light-blue;
 }
 .barang-info .container .card table tr td .stok {
-  font-size: 1em;
+  font-size: 1.3em;
+  margin: 1em 0 0;
   color: $light-blue;
 }
 .barang-info .container .card table tr td:first-child {
@@ -491,6 +492,108 @@ padding: 2em;
 }
 .barang-info .container .card table tr td.action {
   text-align: end;
+}
+
+/*
+ |--------------------------
+ |  Invoice
+ |--------------------------
+ */
+
+.invoice-popup {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2em 1em;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: #00000080;
+}
+.invoice-popup .overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 70em;
+  margin: 0 0 3em;
+}
+.invoice-popup .overlay .navigation {
+  display: flex;
+  justify-content: end;
+  gap: .8em;
+}
+.invoice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50em;
+  max-width: 50em;
+  aspect-ratio: 210/297;
+  background-color: $white;
+}
+.invoice .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  padding: 1em;
+}
+.invoice .container header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.invoice .container header .info {
+  display: flex;
+  gap: .5em;
+}
+.invoice .container header .info .banner img {
+  width: 5em;
+}
+.invoice .container header .info .address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: .9em;
+  gap: .2em;
+}
+.invoice .container header .info .address h3 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.4em;
+  font-weight: bolder;
+  color: red;
+}
+.invoice .container header .info .address h4 {
+  font-size: 1.1em;
+}
+.invoice .container header .info .address h5 {
+  font-size: 1.1em;
+}
+.invoice .container header .order {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  text-align: end;
+  white-space: nowrap;
+  gap: .8em;
+}
+.invoice .container .detail th,
+.invoice .container .detail td {
+  white-space: nowrap;
+  padding: .2em .8em;
+  border: 1px solid $dark;
+}
+.invoice .container .detail th {
+  font-family: 'Roboto Bold', sans-serif;
+}
+.invoice .container footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 #select {

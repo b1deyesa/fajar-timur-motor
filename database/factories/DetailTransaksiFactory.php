@@ -23,7 +23,6 @@ class DetailTransaksiFactory extends Factory
             'barang_id' => Barang::all()->random()->id,
             'jumlah' => fake()->numberBetween(1,50),
             'harga_jual' => fake()->numberBetween(10000,99999999),
-            'diskon' => fake()->numberBetween(0,100),
         ];
     }
 }

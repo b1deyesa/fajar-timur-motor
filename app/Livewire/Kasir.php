@@ -14,7 +14,7 @@ class Kasir extends Component
     public $step = 1; 
     public $total = 0;
     public $invoice;
-    public $transaksi_id;
+    public $transaksi;
     public $barang = [];
     public $values = [
         [
@@ -22,13 +22,13 @@ class Kasir extends Component
             'nama' => null,
             'jumlah' => null,
             'harga_jual' => null,
-            'diskon' => 0,
+            'deskripsi' => null,
         ]
     ];
     public $data_pembeli = [
         'nama_pembeli' => null,
         'metode_pembayaran' => null,
-        'harga_pengiriman' => null,
+        'harga_pengiriman' => 0,
         'agen_pengiriman' => null,
     ];
 
@@ -43,16 +43,12 @@ class Kasir extends Component
             'values.*.nama' => 'required',
             'values.*.jumlah' => 'required|numeric',
             'values.*.harga_jual' => 'required|numeric',
-            'values.*.diskon' => 'required|numeric|between:0,100',
         ], [
             'values.*.nama.required' => 'Pilih barang terlebih dahulu',
             'values.*.jumlah.required' => 'Quantity tidak boleh kosong',
             'values.*.harga_jual.required' => 'Harga jual tidak boleh kosong',
-            'values.*.diskon.required' => 'Diskon tidak boleh kosong',
             'values.*.jumlah.numeric' => 'Quantity harus berupa angka',
             'values.*.harga_jual.numeric' => 'Harga jual harus berupa angka',
-            'values.*.diskon.numeric' => 'Diskon harus berupa angka',
-            'values.*.diskon.between' => 'Angka harus 0 - 100',
         ]);
 
         $this->total = $this->sum($this->values);
@@ -71,7 +67,7 @@ class Kasir extends Component
             'nama' => null,
             'jumlah' => null,
             'harga_jual' => null,
-            'diskon' => 0,
+            'deskripsi' => null,
         ];
     }
 
@@ -100,7 +96,7 @@ class Kasir extends Component
     {
         $hasil = 0;
         foreach ($values as $value) {
-            $hasil += ($value['harga_jual'] * $value['jumlah']) - (($value['harga_jual'] * $value['jumlah']) * ($value['diskon'] / 100));
+            $hasil += ($value['harga_jual'] * $value['jumlah']);
         }
 
         return $hasil;
@@ -136,7 +132,7 @@ class Kasir extends Component
                 'barang_id' => $barang->id,
                 'jumlah' => $value['jumlah'],
                 'harga_jual' => $value['harga_jual'],
-                'diskon' => $value['diskon'],
+                'deskripsi' => $value['deskripsi'],
             ]);
         }
 
@@ -145,12 +141,10 @@ class Kasir extends Component
             'user_id' => Auth::id(),
             'task' => 'Melakukan transaksi ('. $transaksi->kode .')'
         ]);
-
-        // Get transaksi id
-        $this->transaksi_id = $transaksi->id;
         
         // Next Step
         $this->invoice = true;
+        $this->transaksi = Transaksi::where('id', $transaksi->id)->first();
     }
     
     public function close()

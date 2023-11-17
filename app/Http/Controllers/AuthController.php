@@ -19,7 +19,11 @@ class AuthController extends Controller
     {
         // Check if auth has login
         if (Auth::check()) {
-            return redirect()->route('dashboard.index');
+            if(Auth::user()->role == 'Admin') {
+                return redirect()->route('dashboard.index');
+            } else {
+                return redirect()->route('kasir.index');
+            }
         }
 
         return view('index');
@@ -56,16 +60,21 @@ class AuthController extends Controller
     
     public function invoice($id)
     {
-        // Get transaksi data
-        $transaksi = Transaksi::where('id', $id)->first();
+        // // Get transaksi data
+        // $transaksi = Transaksi::where('id', $id)->first();
 
-        // Load invoice view
-        $pdf = PDF::loadView('kasir.invoice', [
+        // // Load invoice view
+        // $pdf = PDF::loadView('kasir.invoice', [
+        //     'transaksi' => $transaksi
+        // ]);
+
+        // // Download invoice
+        // return $pdf->download('Struk '. $transaksi->kode .'.pdf');
+
+        $transaksi = Transaksi::where('id', $id)->first();
+        return view('kasir.invoice', [
             'transaksi' => $transaksi
         ]);
-
-        // Download invoice
-        return $pdf->download('Struk '. $transaksi->kode .'.pdf');
     }
 
     public function login(Request $request)
@@ -82,13 +91,28 @@ class AuthController extends Controller
         // Success username and password
         $credenitials = $request->only('username','password');
         if (Auth::attempt($credenitials)) {
-            // Log
-            Log::create([
-                'user_id' => Auth::id(),
-                'task' => 'Login'
-            ]);
+            
+            // Admin Login
+            if (Auth::user()->role == 'Admin') {
+                // Log
+                Log::create([
+                    'user_id' => Auth::id(),
+                    'task' => 'Login'
+                ]);
 
-            return redirect()->route('dashboard.index');
+                return redirect()->route('dashboard.index');
+            }
+
+            // Kasir Login
+            if (Auth::user()->role == 'Kasir') {
+                // Log
+                Log::create([
+                    'user_id' => Auth::id(),
+                    'task' => 'Login Menu Transaksi'
+                ]);
+    
+                return redirect()->route('kasir.index');
+            }
         }
 
         // Failed username or password

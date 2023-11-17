@@ -38,12 +38,24 @@
             placeholder='No. Telp' 
             :value="$user->telp" 
             />
+        <x-input 
+            label="Role"
+            type="select" 
+            name="role"
+            :required="true">
+            <option value="{{ $user->role }}" disabled selected>{{ $user->role }}</option>
+            <option value="Admin">Admin</option>
+            <option value="Kasir">Kasir</option>
+        </x-input>
+
+        @if($user->id == Auth::id())
         <x-input
             label="Ubah Password" 
             type='text' 
             name='password' 
             placeholder='password' 
             />
+        @endif
 
         {{-- Navigation --}}
         <x-slot:navigation>

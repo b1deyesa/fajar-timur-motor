@@ -4,9 +4,9 @@
     <x-alert />
 
     {{-- Login Kasir --}}
-    <section class="login-kasir">
+    {{-- <section class="login-kasir">
         @livewire("login-kasir")
-    </section>
+    </section> --}}
 
     {{-- Login Admin --}}
     <section class="login-admin">

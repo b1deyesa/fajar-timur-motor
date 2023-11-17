@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
+            $table->enum('role', ['Admin', 'Kasir']);
             $table->string('password');
         });
     }

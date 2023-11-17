@@ -93,7 +93,7 @@
                     placeholder: "Pilih barang",
                 });
             });
-        </script>
+        </script>create
     @endpush
 </x-dashboard>
 

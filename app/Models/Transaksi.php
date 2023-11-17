@@ -23,4 +23,14 @@ class Transaksi extends Model
     {
         return $this->hasMany(DetailTransaksi::class);
     }
+
+    public function sum()
+    {        
+        $hasil = 0;
+        foreach ($this->detail_transaksis as $key => $value) {
+            $hasil += $value['harga_jual'] * $value['jumlah'];
+        }
+
+        return $hasil;
+    }
 }

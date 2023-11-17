@@ -12,6 +12,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
+                <th>Role</th>
                 <th>Alamat</th>
                 <th>No Telp</th>
                 <th>Action</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td align="center">{{ $user->username }}</td>
                 <td>{{ $user->nama }}</td>
+                <td>{{ $user->role }}</td>
                 <td>{{ $user->alamat }}</td>
                 <td>{{ $user->telp }}</td>
                 <td align="center" class="action">

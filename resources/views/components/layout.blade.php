@@ -12,6 +12,8 @@
     {{-- Script --}}
     <script src="https://kit.fontawesome.com/4419d23bf4.js" crossorigin="anonymous"></script>
     <script src="{{ asset('jquery.min.js') }}"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <link rel="stylesheet" href="https://printjs4de6.kxcdn.com/print.min.css" />
 
     @stack('css')
     @livewireStyles

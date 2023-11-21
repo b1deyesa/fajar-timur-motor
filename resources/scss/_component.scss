@@ -1,5 +1,22 @@
 /*
  |--------------------------
+ |  Select 2
+ |--------------------------
+ */
+
+.kasir .select2 {
+  max-width: 16.59em;
+}
+.kasir .select2-selection__rendered {
+  font-size: .9em;
+  color: $light
+}
+.kasir .select2-results__option.select2-results__option--selectable {
+  font-size: .8em;
+}
+
+/*
+ |--------------------------
  |  Alert
  |--------------------------
  */
@@ -203,7 +220,7 @@ nav .container a:nth-child(3)::after {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 70em;
+  max-width: 80em;
   border-radius: 1em 1em 0 0;
   box-shadow: 1px 1px 10px #00000020;
 }
@@ -266,9 +283,23 @@ nav .container a:nth-child(3)::after {
   border: 1px solid $gray;
 }
 .table .container .content #myTable td.action {
+  min-width: 13em;
   text-overflow: unset;
-  max-width: 10em;
   overflow: visible;
+}
+.table .container .content #myTable td.action form {
+  display: inline-block;
+}
+.table .container .content #myTable td.action form button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  text-transform: none;
+  gap: .2em;
+  padding: .2em 1em;
+  border-radius: 5em;
+  background-color: $red;
+  color: $white;
 }
 .table .container .content .dataTables_filter input {
   width: 20em;

@@ -18,6 +18,7 @@
                 <th>Agen Pengiriman</th>
                 <th>Tanggal Transaksi</th>
                 <th style="min-width: 9em">Total</th>
+                <th>Kasir</th>
                 <th style="min-width: 9em">Action</th>
             </tr>
         </x-slot:head>
@@ -32,8 +33,14 @@
                 <td>{{ $transaksi->agen_pengiriman ?? '-' }}</td>
                 <td align="center">{{ $transaksi->created_at->format('d/m/Y') }}</td>
                 <td>Rp {{ number_format($transaksi->total, '2', ',', '.') }}</td>
+                <td>{{ $transaksi->user->nama }}</td>
                 <td align="center" class="action">
-                    <a href="{{ route('detail-transaksi.index', compact('transaksi')) }}" id="info"><i class="fa-solid fa-eye"></i>Detail Transaksi</a>
+                    <form method="POST" action="{{ route('transaksi.destroy', compact('transaksi')) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Yakin ingin menghapus?')" id="delete"><i class="fa-solid fa-trash"></i>Hapus</button>
+                    </form>
+                    <a href="{{ route('detail-transaksi.index', compact('transaksi')) }}" id="info"><i class="fa-solid fa-eye"></i>Detail</a>
                 </td>
             </tr>
             @endforeach

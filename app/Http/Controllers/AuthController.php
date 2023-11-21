@@ -41,42 +41,6 @@ class AuthController extends Controller
         ]);
     }
 
-    public function kasir()
-    {
-        $hour = date('G');
-
-        if($hour >= 5 && $hour <= 11) {
-            $day = "Pagi ☕";
-        } else if($hour >= 12 && $hour <= 15) {
-            $day = "Siang ☀️";
-        } else {
-            $day = "Malam 🌙";
-        }
-        
-        return view('kasir.index', [
-            'day' => $day
-        ]);
-    }
-    
-    public function invoice($id)
-    {
-        // // Get transaksi data
-        // $transaksi = Transaksi::where('id', $id)->first();
-
-        // // Load invoice view
-        // $pdf = PDF::loadView('kasir.invoice', [
-        //     'transaksi' => $transaksi
-        // ]);
-
-        // // Download invoice
-        // return $pdf->download('Struk '. $transaksi->kode .'.pdf');
-
-        $transaksi = Transaksi::where('id', $id)->first();
-        return view('kasir.invoice', [
-            'transaksi' => $transaksi
-        ]);
-    }
-
     public function login(Request $request)
     {
         // Validate request

@@ -348,6 +348,41 @@ body {
   bottom: -2em;
 }
 
+.transaksi-info {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+.transaksi-info .empty {
+  text-align: center;
+  width: 100%;
+}
+.transaksi-info > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.transaksi-info > .container .title {
+  text-align: center;
+  color: $white;
+  text-shadow: 2px 2px 8px #00000020;
+}
+.transaksi-info > .container .card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em 2em 1em;
+  border-radius: .5em;
+  background-color: $light;
+}
+.transaksi-info > .container .card .card-title {
+  color: $black;
+}
+.transaksi-info > .container .card .navigation {
+  display: flex;
+  justify-content: end;
+}
+
 .kasir header {
   background-color: $white;
 }
@@ -372,6 +407,24 @@ body {
 .kasir .title-bar small {
   text-align: center;
   color: $blue;
+}
+.kasir .title-bar form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.kasir .title-bar form input {
+  width: 20em;
+  padding: .5em .8em;
+  border-radius: 50em;
+  border: none;
+}
+.kasir .title-bar form button {
+  position: absolute;
+  right: 1em;
+  padding: 0;
+  background: transparent;
 }
 .kasir > .container {
   display: flex;

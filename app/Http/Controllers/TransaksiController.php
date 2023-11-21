@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use App\Models\Log;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -63,7 +65,16 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        //
+        // Delete data
+        $transaksi->delete();
+        
+        // Log
+        Log::create([
+            'user_id' => Auth::id(),
+            'task' => 'Hapus Transaksi ('. $transaksi->kode .')'
+        ]);
+        
+        return redirect()->route('user.index')->with('message','Transaksi ('. $transaksi->kode .') Berhasil di Hapus');
     }
 
     public function report()

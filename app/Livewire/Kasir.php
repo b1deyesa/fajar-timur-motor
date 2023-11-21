@@ -31,7 +31,7 @@ class Kasir extends Component
         'harga_pengiriman' => 0,
         'agen_pengiriman' => null,
     ];
-
+    
     public function refresh()
     {
         return redirect()->route('kasir.index');
@@ -39,6 +39,8 @@ class Kasir extends Component
     
     public function next() 
     {   
+        dd($this->values);
+        
         $this->validate([
             'values.*.nama' => 'required',
             'values.*.jumlah' => 'required|numeric',
@@ -81,7 +83,7 @@ class Kasir extends Component
     }
     
     public function updatedBarang($id, $key)
-    {
+    {        
         if ($id != '') {
             $barang = Barang::find($id);
             $this->values[$key]['kode'] = $barang->kode; 
@@ -151,9 +153,11 @@ class Kasir extends Component
     {
         return $this->invoice = false;
     }
-        
+    
     public function render()
     {
+        $this->dispatch('selectl');
+        
         return view('livewire.kasir', [
             'barangs' => Barang::orderBy('id', 'desc')->get()
         ]);

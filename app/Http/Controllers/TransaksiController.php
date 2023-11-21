@@ -74,7 +74,7 @@ class TransaksiController extends Controller
             'task' => 'Hapus Transaksi ('. $transaksi->kode .')'
         ]);
         
-        return redirect()->route('user.index')->with('message','Transaksi ('. $transaksi->kode .') Berhasil di Hapus');
+        return redirect()->route('transaksi.index')->with('message','Transaksi ('. $transaksi->kode .') Berhasil di Hapus');
     }
 
     public function report()

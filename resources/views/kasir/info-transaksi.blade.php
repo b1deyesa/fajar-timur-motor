@@ -1,5 +1,6 @@
 <x-kasir>
     <section class="transaksi-info">
+        <a href="{{ route('kasir.index') }}" class="button back">Kembali</a>
         @empty($transaksi)
             <span class="empty">Transaksi tidak ditemukan!!! Periksa kembali nomor nota</span>
         @else

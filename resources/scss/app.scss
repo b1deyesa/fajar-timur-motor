@@ -350,8 +350,15 @@ body {
 
 .transaksi-info {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 2em;
+}
+.transaksi-info .back {
+  align-self: flex-start;
+  width: fit-content;
+  margin: 0 0 1em;
 }
 .transaksi-info .empty {
   text-align: center;
@@ -585,7 +592,7 @@ padding: 2em;
   justify-content: space-between;
   width: 50em;
   max-width: 50em;
-  aspect-ratio: 210/297;
+  aspect-ratio: 210/250;
   background-color: $white;
 }
 .invoice .container {

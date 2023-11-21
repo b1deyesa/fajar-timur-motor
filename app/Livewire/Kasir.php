@@ -39,8 +39,6 @@ class Kasir extends Component
     
     public function next() 
     {   
-        dd($this->values);
-        
         $this->validate([
             'values.*.nama' => 'required',
             'values.*.jumlah' => 'required|numeric',

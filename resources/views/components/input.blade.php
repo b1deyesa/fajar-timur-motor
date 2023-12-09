@@ -5,7 +5,8 @@
         {{-- Text --}}
         @if ($type == 'text')
             <input 
-                type="text" name="{{ $name }}" 
+                type="text" name="{{ $name }}"
+                id="{{ $name }}" 
                 placeholder="{{ $placeholder }}" 
                 value="{{ old($name, $value) }}" 
                 autocomplete="off" 
@@ -16,6 +17,21 @@
                 <small>{{ $message }}</small>
             @enderror
 
+        {{-- Number --}}
+        @elseif ($type == 'number')
+            <input 
+                type="number" name="{{ $name }}" 
+                id="{{ $name }}"
+                placeholder="{{ $placeholder }}" 
+                value="{{ old($name, $value) }}" 
+                autocomplete="off" 
+                wire:model.lazy="{{ $name }}" 
+                @if($disabled) disabled @endif 
+            >
+            @error($name)
+                <small>{{ $message }}</small>
+            @enderror
+            
         {{-- File --}}
         @elseif ($type == 'file')
             <input 
@@ -56,6 +72,7 @@
             <input 
                 type="password" 
                 name="{{ $name }}" 
+                id="{{ $name }}"
                 placeholder="{{ $placeholder }}" 
                 value="{{ old($name, $value) }}" 
                 autocomplete="off" 

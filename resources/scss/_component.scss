@@ -1,22 +1,5 @@
 /*
  |--------------------------
- |  Select 2
- |--------------------------
- */
-
-.kasir .select2 {
-  max-width: 16.59em;
-}
-.kasir .select2-selection__rendered {
-  font-size: .9em;
-  color: $light
-}
-.kasir .select2-results__option.select2-results__option--selectable {
-  font-size: .8em;
-}
-
-/*
- |--------------------------
  |  Alert
  |--------------------------
  */
@@ -87,7 +70,7 @@
 .label .input textarea {
   resize: vertical;
 }
-.label .input small {
+.label small {
   white-space: pre-wrap;
   width: 100%;
   color: $red;
@@ -96,6 +79,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+.label .input .quantity {
+  display: inline-flex;
+  flex-direction: row;
+  gap: .5em;
+  width: 100%;
+}
+.label .input .quantity select {
+  max-width: 5em;
 }
 
 /*
@@ -258,7 +250,7 @@ nav .container a:nth-child(3)::after {
   color: $white;
 }
 .table .container .content #myTable {
-  font-size: .9em;
+  font-size: .8em;
   border-collapse: collapse;
   background-color: $white;
 }
@@ -278,7 +270,7 @@ nav .container a:nth-child(3)::after {
   white-space: nowrap;
   word-break: break-all;
   max-width: 4em;
-  padding: .5em .8em;
+  padding: .4em .8em;
   overflow: hidden;
   border: 1px solid $gray;
 }
@@ -289,6 +281,14 @@ nav .container a:nth-child(3)::after {
 }
 .table .container .content #myTable td.action form {
   display: inline-block;
+}
+.table .container .content #myTable td.action i {
+  font-size: 10px;
+}
+.table .container .content #myTable td.action a,
+.table .container .content #myTable td.action form button {
+  font-size: 12px;
+  height: 2em;
 }
 .table .container .content #myTable td.action form button {
   display: inline-flex;
@@ -357,6 +357,17 @@ nav .container a:nth-child(3)::after {
   display: flex;
   justify-content: end;
   gap: 1em;
+}
+.edit .container .content .button .detail {
+  width: 100%;
+}
+.edit .container .content .button .detail table td {
+  white-space: nowrap;
+  padding: 0 1em 1em 0;
+  color: $dark;
+}
+.edit .container .content .button .detail table td:first-child {
+  font-family: 'Roboto Bold';
 }
 .edit .container .content form {
   width: 100%;

@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
-use App\Models\Log;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class TransaksiController extends Controller
+class KasirTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.transaksi.index', [
+        return view('kasir.transaksi.index', [
             'transaksis' => Transaksi::orderBy('id', 'desc')->get()
         ]);
     }
@@ -65,22 +62,6 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        // Delete data
-        $transaksi->delete();
-        
-        // Log
-        Log::create([
-            'user_id' => Auth::id(),
-            'task' => 'Hapus Transaksi ('. $transaksi->kode .')'
-        ]);
-        
-        return redirect()->route('transaksi.index')->with('message','Transaksi ('. $transaksi->kode .') Berhasil di Hapus');
-    }
-
-    public function invoice(Transaksi $transaksi)
-    {
-        return view('dashboard.transaksi.invoice', [
-            'transaksi' => $transaksi
-        ]);
+        //
     }
 }

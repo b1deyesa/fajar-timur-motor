@@ -6,7 +6,7 @@
     {{-- Table --}}
     <x-table title="Detail Transaksi - {{ $transaksi->kode }}" color="yellow">
         <x-slot:button>
-        Print
+            <a href="{{ route('transaksi.invoice', compact('transaksi')) }}"><i class="fa-solid fa-print"></i>Cetak Invoice</a>
         </x-slot:button>
         <x-slot:head>
             <tr>

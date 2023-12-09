@@ -24,7 +24,6 @@ class BarangFactory extends Factory
             'nama' => fake()->colorName(),
             'deskripsi' => fake()->text(100),
             'merek' => fake()->userAgent(),
-            'harga_beli' => fake()->numberBetween(1000,999999999),
         ];
     }
 }

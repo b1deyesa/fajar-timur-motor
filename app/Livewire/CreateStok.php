@@ -17,14 +17,21 @@ class CreateStok extends Component
     public $modal = false;
     public $disabled = false;
     public $data;
+    public $suppliers;
     public $supplier = [
         'id' => null,
         'nama' => null,
         'alamat' => null,
         'telp' => null,
+        'harga_beli' => null,
         'stok' => null
     ];
 
+    public function mount()
+    {
+        $this->suppliers = Supplier::orderBy('id', 'desc')->get();
+    }
+    
     public function open()
     {
         $this->modal = true;
@@ -58,10 +65,13 @@ class CreateStok extends Component
         $this->validate([
             'supplier.nama' => 'required',
             'supplier.stok' => 'required|numeric',
+            'supplier.harga_beli' => 'required|numeric',
         ], [
             'supplier.nama.required' => 'Supplier tidak boleh kosong',
             'supplier.stok.required' => 'Stok tidak boleh kosong',
-            'supplier.stok.numeric' => 'Stok harus berupa angka'
+            'supplier.harga_beli.required' => 'Harga tidak boleh kosong',
+            'supplier.stok.numeric' => 'Stok harus berupa angka',
+            'supplier.harga_beli.numeric' => 'Harga harus berupa angka'
         ]);
 
         // Supplier
@@ -90,6 +100,7 @@ class CreateStok extends Component
         SupplierBarang::create([
             'supplier_id' => $supplier['id'],
             'barang_id' => $this->barang['id'],
+            'harga_beli' => $this->supplier['harga_beli'],
             'stok' => $this->supplier['stok']
         ]);
 
@@ -104,7 +115,6 @@ class CreateStok extends Component
     public function render()
     {
         return view('livewire.create-stok', [
-            'suppliers' => Supplier::orderBy('id', 'desc')->get(),
             'barang' => $this->barang,
             'gudang' => $this->gudang
         ]);

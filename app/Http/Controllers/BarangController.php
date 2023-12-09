@@ -19,7 +19,7 @@ class BarangController extends Controller
      */
     public function index(Gudang $gudang)
     {
-        $barangs = Barang::where('gudang_id', $gudang->id)->get();
+        $barangs = Barang::where('gudang_id', $gudang->id)->orderBy('id', 'desc')->get();
         
         return view('dashboard.barang.index', [
             'barangs' => $barangs,
@@ -49,7 +49,7 @@ class BarangController extends Controller
     public function show(Gudang $gudang, Barang $barang)
     {
         return view('dashboard.barang.show', [
-            'supplier_barangs' => SupplierBarang::where('barang_id', $barang->id)->get(),
+            'supplier_barangs' => SupplierBarang::where('barang_id', $barang->id)->orderBy('id', 'desc')->get(),
             'barang' => $barang,
             'gudang' => $gudang
         ]);
@@ -75,13 +75,15 @@ class BarangController extends Controller
         // Validate data
         $request->validate([
             'nama' => 'required',
-            'harga_beli' => 'required|numeric',
         ], [
             'nama.required' => 'Nama barang tidak boleh kosong',
-            'harga_beli.required' => 'Harga beli tidak boleh kosong',
-            'harga_beli.numeric' => 'Harga beli harus berupa angka',
         ]);
-
+        
+        // Kode barang baru
+        if ($barang->kode == 'Barang Baru') {
+            $request['kode'] = 'BRG-' . sprintf('%05d', Barang::latest()->first()->id + 1);
+        }
+        
         // Update data
         $barang->update($request->all());
 

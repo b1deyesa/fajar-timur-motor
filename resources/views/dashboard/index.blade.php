@@ -1,6 +1,6 @@
 <x-dashboard>
     <section class="dashboard">
-
+        
         {{-- Sidebar --}}
         <div class="sidebar">
             <div class="container">
@@ -32,6 +32,13 @@
                             <i class="fa-solid fa-users"></i>
                             <label>
                                 <p><u>{{ $total_user }}</u> Admin</p>
+                                <small>> Cek Detail</small>
+                            </label>
+                        </a>
+                        <a href="{{ route('requisition-order.index') }}" class="button">
+                            <i class="fa-regular fa-hourglass-half"></i>
+                            <label>
+                                <p><u>{{ $total_requisition_order }}</u> RO</p>
                                 <small>> Cek Detail</small>
                             </label>
                         </a>

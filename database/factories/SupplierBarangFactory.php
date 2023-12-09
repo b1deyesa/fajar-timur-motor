@@ -21,7 +21,9 @@ class SupplierBarangFactory extends Factory
         return [
             'supplier_id' => Supplier::all()->random()->id,
             'barang_id' => Barang::all()->random()->id,
-            'stok' => fake()->numberBetween(0,100)           
+            'harga_beli' => fake()->numberBetween(1000,999999999),
+            'stok' => fake()->numberBetween(0,100),
+            'status' => fake()->randomElement(['Dalam Proses', 'Telah Dikirim', 'Dibatalkan'])
         ];
     }
 }

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi')->nullable();
             $table->string('merek')->nullable();
-            $table->string('harga_beli')->default(0);
             $table->timestamps();
         });
     }

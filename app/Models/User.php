@@ -35,4 +35,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Log::class);
     }
+
+    public function requisition_orders(): HasMany
+    {
+        return $this->hasMany(RequisitionOrder::class);
+    }
 }

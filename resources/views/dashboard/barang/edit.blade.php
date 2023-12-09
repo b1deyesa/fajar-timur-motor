@@ -9,7 +9,8 @@
         {{-- Slot --}}
         <x-input
             label="Kode Barang" 
-            type='text' 
+            type="text" 
+            name="kode"
             :value="$barang->kode" 
             :disabled="true"
             :required="true" 
@@ -37,13 +38,6 @@
             name='merek' 
             placeholder='Merek' 
             :value="$barang->merek" 
-            />
-        <x-input
-            label="Harga Beli" 
-            type='text' 
-            name='harga_beli' 
-            placeholder='Isi angka 0 bila belum diketahui' 
-            :value="$barang->harga_beli" 
             />
         <x-input
             label="Deskripsi" 

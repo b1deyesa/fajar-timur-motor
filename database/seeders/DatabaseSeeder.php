@@ -12,6 +12,7 @@ use App\Models\Supplier;
 use App\Models\Transaksi;
 use App\Models\SupplierBarang;
 use App\Models\DetailTransaksi;
+use App\Models\RequisitionOrder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         // Supplier::factory(5)->create();
         // Barang::factory(10)->create();
         // SupplierBarang::factory(100)->create();
+        // RequisitionOrder::factory(20)->create();
         // Transaksi::factory(50)->create();
         // DetailTransaksi::factory(200)->create();
         // Log::factory(100)->create();

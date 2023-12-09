@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SupplierBarang extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'supplier_id',
-        'barang_id',
-        'stok'
-    ];
+    protected $guarded = ['id'];
 
     public function barang(): BelongsTo
     {
@@ -23,5 +20,10 @@ class SupplierBarang extends Model
     public function supplier(): BelongsTo
     {
         return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+
+    public function requisition_orders(): HasMany
+    {
+        return $this->hasMany(RequisitionOrder::class);
     }
 }

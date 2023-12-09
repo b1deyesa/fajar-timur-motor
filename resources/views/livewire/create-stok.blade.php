@@ -42,10 +42,18 @@
     <tr><td colspan="3"><hr></td></tr>
     
     <x-input 
+        label="Harga Beli" 
+        type="text" 
+        name="supplier.harga_beli" 
+        placeholder="Isi angka 0 bila belum diketahui"
+        :required="true"
+        />
+    <x-input 
         label="Stok" 
         type="text" 
         name="supplier.stok" 
-        placeholder="Tambah jumlah stok" 
+        placeholder="Tambah Jumlah Stok" 
+        :required="true"
         />
     
     {{-- Navigation --}}

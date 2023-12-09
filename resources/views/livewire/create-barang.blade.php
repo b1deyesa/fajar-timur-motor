@@ -8,12 +8,18 @@
 
     {{-- Slot --}}
     @if ($step == 1)
-    <select wire:model.lazy="datasup" id="select">
-        <option value="">Tambah Supplier</option>
-        @foreach ($suppliers as $supplier)    
-            <option value="{{ $supplier->id }}">[{{ $supplier->kode }}] {{ $supplier->nama }}</option>
-        @endforeach
-    </select>
+    <tr class="label">
+        <td>Supplier</td>
+        <td>:</td>
+        <td class="input">
+            <select wire:model.lazy="datasup" id="select">
+                <option value="">Tambah Supplier</option>
+                @foreach ($suppliers as $supplier)    
+                    <option value="{{ $supplier->id }}">[{{ $supplier->kode }}] {{ $supplier->nama }}</option>
+                @endforeach
+            </select>
+        </td>
+    </tr>
     <x-input 
         label="Nama Supplier" 
         type="text" 
@@ -59,17 +65,17 @@
         :required="true"
         />
     <x-input 
-        label="Stok Beli"
-        type="text"
-        name="barang.stok"
-        placeholder="Isi angka 0 bila belum diketahui"
-        :required="true"
-        />
-    <x-input 
         label="Deskripsi"
         type="textarea"
         name="barang.deskripsi"
         placeholder="Deskripsi"
+        />
+    <x-input 
+        label="Stok saat ini"
+        type="text"
+        name="barang.stok"
+        placeholder="Isi angka 0 bila belum diketahui"
+        :required="true"
         />
     @endif
 

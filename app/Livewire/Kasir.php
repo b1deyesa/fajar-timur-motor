@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Log;
 use App\Models\Barang;
+use App\Models\Gudang;
 use Livewire\Component;
 use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
@@ -15,12 +16,15 @@ class Kasir extends Component
     public $total = 0;
     public $invoice;
     public $transaksi;
-    public $barang = [];
+    public $barang = [
+        0 => null
+    ];
     public $values = [
         [
             'kode' => null,
             'nama' => null,
             'jumlah' => null,
+            'satuan' => 'pcs',
             'harga_jual' => null,
             'deskripsi' => null,
         ]
@@ -50,7 +54,7 @@ class Kasir extends Component
             'values.*.jumlah.numeric' => 'Quantity harus berupa angka',
             'values.*.harga_jual.numeric' => 'Harga jual harus berupa angka',
         ]);
-
+        
         $this->total = $this->sum($this->values);
         return $this->step = 2;
     }
@@ -62,10 +66,12 @@ class Kasir extends Component
     
     public function tambah()
     {
+        $this->barang[] = null;
         $this->values[] = [
             'kode' => null,
             'nama' => null,
             'jumlah' => null,
+            'satuan' => 'pcs',
             'harga_jual' => null,
             'deskripsi' => null,
         ];
@@ -126,11 +132,33 @@ class Kasir extends Component
 
         // Store detail transaksi
         foreach ($this->values as $value) {
-            $barang = Barang::where('kode', $value['kode'])->first();
+            // Add new barang
+            if ($value['kode'] == null) {
+                $first_gudang = Gudang::first()->id;
+                
+                $barang = Barang::create([
+                    'gudang_id' => $first_gudang,
+                    'kode' => 'Barang Baru',
+                    'nama' => $value['nama'],
+                    'merek' => null,
+                    'harga_beli' => 0,
+                    'deskripsi' => null,
+                ]);
+        
+                // Log
+                Log::create([
+                    'user_id' => Auth::id(),
+                    'task' => 'Tambah Barang ('. $barang->kode .')'
+                ]);
+            } else {
+                $barang = Barang::where('kode', $value['kode'])->first();
+            }
+
             DetailTransaksi::create([
                 'transaksi_id' => $transaksi->id,
                 'barang_id' => $barang->id,
                 'jumlah' => $value['jumlah'],
+                'satuan' => $value['satuan'],
                 'harga_jual' => $value['harga_jual'],
                 'deskripsi' => $value['deskripsi'],
             ]);

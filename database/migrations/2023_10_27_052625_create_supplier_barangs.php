@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('barang_id')->constrained('barangs')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('harga_beli')->default(0);
             $table->string('stok')->default(0);
+            $table->enum('status', ['Dalam Proses', 'Telah Dikirim', 'Dibatalkan'])->default('Dalam Proses');
             $table->timestamps();
         });
     }

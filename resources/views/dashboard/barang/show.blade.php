@@ -8,6 +8,7 @@
                 <th>Tanggal Masuk</th>
                 <th>Supplier Kode</th>
                 <th>Supplier Nama</th>
+                <th>Harga Beli</th>
                 <th>Quantity</th>
             </tr>
         </x-slot:head>
@@ -15,8 +16,9 @@
             @foreach ($supplier_barangs as $supplier_barang)
             <tr>
                 <td align="center">{{ $supplier_barang->created_at }}</td>
-                <td align="center">{{ $supplier_barang->supplier->nama }}</td>
                 <td align="center">{{ $supplier_barang->supplier->kode }}</td>
+                <td align="center">{{ $supplier_barang->supplier->nama }}</td>
+                <td>Rp {{ number_format($supplier_barang->harga_beli, 2, ',', '.') }}</td>
                 <td align="center">{{ $supplier_barang->stok }}</td>
             </tr>
             @endforeach

@@ -121,7 +121,6 @@ class CreateBarang extends Component
             'kode' => $kode_barang,
             'nama' => $this->barang['nama'],
             'merek' => $this->barang['merek'],
-            'harga_beli' => $this->barang['harga_beli'],
             'deskripsi' => $this->barang['deskripsi'],
         ]);
 
@@ -135,7 +134,9 @@ class CreateBarang extends Component
         SupplierBarang::create([
             'supplier_id' => $supplier['id'],
             'barang_id' => $barang['id'],
-            'stok' => $this->barang['stok']
+            'harga_beli' => $this->barang['harga_beli'],
+            'stok' => $this->barang['stok'],
+            'status' => 'Telah Dikirim'
         ]);
         
         return redirect()->route('barang.index', ['gudang' => $this->gudang])->with('message', 'Barang berhasil ditambahkan');

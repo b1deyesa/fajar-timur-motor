@@ -14,18 +14,16 @@
                 <th>Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Merek</th>
-                <th>Harga Beli</th>
                 <th>Stok</th>
                 <th>Action</th>
             </tr>
         </x-slot:head>
         <x-slot:body>
             @foreach ($barangs as $key => $barang)
-            <tr>
+            <tr @if ($barang->kode == 'Barang Baru') style="background: #d7fffa" @endif>
                 <td align="center">{{ $barang->kode }}</td>
                 <td>{{ $barang->nama }}</td>
                 <td>{{ $barang->merek }}</td>
-                <td>Rp {{ number_format($barang->harga_beli, 2, ',', '.') }}</td>
                 <td align="center">{{ $barang->supplier_barangs->sum('stok') - $barang->detail_transaksis->sum('jumlah') }}</td>
                 <td align="center" class="action">
                     <a href="{{ route('barang.edit', compact('gudang', 'barang')) }}" id="edit"><i class="fa-solid fa-pen"></i>Edit</a>

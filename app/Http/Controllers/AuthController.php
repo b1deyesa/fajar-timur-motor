@@ -6,7 +6,9 @@ use App\Models\Log;
 use App\Models\User;
 use App\Models\Barang;
 use App\Models\Gudang;
+use App\Models\RequisitionOrder;
 use App\Models\Supplier;
+use App\Models\SupplierBarang;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,12 +34,13 @@ class AuthController extends Controller
     public function dashboard()
     {   
         return view('dashboard.index', [
-            'total_gudang'      => Gudang   ::all()->count(),
-            'total_supplier'    => Supplier ::all()->count(),
-            'total_user'        => User     ::all()->count() - 1,
-            'total_barang'      => Barang   ::all()->count(),
-            'total_transaksi'   => Transaksi::all()->count(),
-            'logs'              => Log      ::orderBy('id', 'desc')->get(),
+            'total_gudang'              => Gudang        ::all()->count(),
+            'total_supplier'            => Supplier      ::all()->count(),
+            'total_user'                => User          ::all()->count() - 1,
+            'total_barang'              => Barang        ::all()->count(),
+            'total_transaksi'           => Transaksi     ::all()->count(),
+            'total_requisition_order'   => SupplierBarang::where('status', 'Dalam Proses')->count(),
+            'logs'                      => Log           ::orderBy('id', 'desc')->get(),
         ]);
     }
 

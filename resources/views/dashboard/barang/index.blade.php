@@ -20,7 +20,15 @@
         </x-slot:head>
         <x-slot:body>
             @foreach ($barangs as $key => $barang)
-            <tr @if ($barang->kode == 'Barang Baru') style="background: #d7fffa" @endif>
+            <tr 
+                @if ($barang->kode == 'Barang Baru') 
+                    @if ($barang->created_at == $barang->updated_at)
+                        @if (now()->diffInDays(\Carbon\Carbon::parse($barang->created_at)) < 2)
+                            style="background: #d7fffa" 
+                        @endif
+                    @endif
+                @endif
+            >
                 <td align="center">{{ $barang->kode }}</td>
                 <td>{{ $barang->nama }}</td>
                 <td>{{ $barang->merek }}</td>

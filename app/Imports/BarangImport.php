@@ -22,12 +22,9 @@ class BarangImport implements ToModel, WithHeadingRow
         Validator::make($row, [
             'kode' => 'required',
             'nama' => 'required',
-            'harga_beli' => 'required|numeric',
         ], [
             'kode.required' => 'Kolom [ kode ] tidak terdeteksi',
             'nama.required' => 'Kolom [ nama ] tidak terdeteksi',
-            'harga_beli.required' => 'Kolom [ harga_beli ] tidak terdeteksi',
-            'harga_beli.numeric' => 'Kolom [ harga_beli ] harus berupa angka',
         ])->validate();
         
         return new Barang([
@@ -36,7 +33,6 @@ class BarangImport implements ToModel, WithHeadingRow
             'nama' => $row['nama'],
             'deskripsi' => $row['deskripsi'] ?? '',
             'merek' => $row['merek'] ?? '',
-            'harga_beli' => $row['harga_beli'],
         ]);
     }
     

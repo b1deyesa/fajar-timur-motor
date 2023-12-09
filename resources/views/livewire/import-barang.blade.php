@@ -15,7 +15,6 @@
                 <ul>
                     <li>kode (text)<span class="required" /></li> 
                     <li>nama (text)<span class="required" /></li> 
-                    <li>harga_beli (number)<span class="required" /></li>
                     <li>deskripsi (text)</li>
                     <li>merek (text)</li>
                 </ul>

@@ -126,7 +126,7 @@
                     <button type="button" class="info" onclick="printPageArea('printableArea')">Print</button>
                 </div>
                 <div id="printableArea">
-                    <x-invoice :transaksi="$transaksi" />
+                    <x-invoice :transaksi="$transaksi" :title="['BON ASLI', 'BON COPY']" />
                 </div>
             </div>
         </div>

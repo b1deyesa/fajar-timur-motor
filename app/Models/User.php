@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\RO;
 use App\Models\Log;
 use App\Models\Transaksi;
 use Laravel\Sanctum\HasApiTokens;
@@ -36,8 +37,8 @@ class User extends Authenticatable
         return $this->hasMany(Log::class);
     }
 
-    public function requisition_orders(): HasMany
+    public function ros(): HasMany
     {
-        return $this->hasMany(RequisitionOrder::class);
+        return $this->hasMany(RO::class);
     }
 }

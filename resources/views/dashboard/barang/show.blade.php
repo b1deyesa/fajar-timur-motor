@@ -9,7 +9,8 @@
                 <th>Supplier Kode</th>
                 <th>Supplier Nama</th>
                 <th>Harga Beli</th>
-                <th>Quantity</th>
+                <th>Stok</th>
+                <th>Action</th>
             </tr>
         </x-slot:head>
         <x-slot:body>
@@ -20,6 +21,9 @@
                 <td align="center">{{ $supplier_barang->supplier->nama }}</td>
                 <td>Rp {{ number_format($supplier_barang->harga_beli, 2, ',', '.') }}</td>
                 <td align="center">{{ $supplier_barang->stok }}</td>
+                <td align="center" class="action">
+                    <a href="{{ route('supplier-barang.edit', compact('gudang', 'barang', 'supplier_barang')) }}" id="edit"><i class="fa-solid fa-pen"></i>Edit</a>
+                </td>
             </tr>
             @endforeach
         </x-slot:body>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\DetailRO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,8 +23,8 @@ class SupplierBarang extends Model
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }
 
-    public function requisition_orders(): HasMany
+    public function detail_ros(): HasMany
     {
-        return $this->hasMany(RequisitionOrder::class);
+        return $this->hasMany(DetailRO::class);
     }
 }

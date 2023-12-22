@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Barang;
-use App\Models\SupplierBarang;
+use App\Models\DetailRO;
+use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class RequisitionOrder extends Model
+class RO extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
@@ -20,8 +20,13 @@ class RequisitionOrder extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function supplier_barang(): BelongsTo
+    public function supplier(): BelongsTo
     {
-        return $this->belongsTo(SupplierBarang::class, 'supplier_barang_id');
+        return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+
+    public function detail_ros(): HasMany
+    {
+        return $this->hasMany(DetailRO::class);
     }
 }

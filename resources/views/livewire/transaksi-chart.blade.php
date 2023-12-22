@@ -29,4 +29,5 @@
         </li>
         @endfor
     </ul>
+    <h6>Total: Rp{{ number_format($transaksis->whereBetween('created_at', [today()->subDay($count)->toDateTimeString(), today()->subDay($i - 1)->toDateTimeString()])->sum('total'), 0, ',', '.') }}</h6>
 </div>

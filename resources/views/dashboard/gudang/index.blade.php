@@ -8,7 +8,7 @@
     <x-alert />
     
     {{-- Table --}}
-    <x-table title="Semua Gudang" color="red">
+    <x-table title="Semua Gudang" color="blue">
         <x-slot:button>
             @livewire('create-gudang')
             {{-- Status Barang --}}

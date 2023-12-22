@@ -1,23 +1,33 @@
 <x-dashboard>
-    <x-edit title="Detail Request" route="{{ route('requisition-order.status_diterima_update', ['supplierBarang' => $requisition_order->supplier_barang]) }}">
+    <x-edit title="Detail Request" route="{{ route('ro.stok-update', compact('ro', 'detail_ro')) }}">
 
         <x-slot:button>
             <div class="detail">
                 <table>
                     <tr>
+                        <td colspan="3" align="right">
+                            @livewire('delete-detail-r-o', compact('ro', 'detail_ro'))
+                        </td>
+                    </tr>
+                    <tr>
                         <td>No. Request</td>
                         <td>:</td>
-                        <td>{{ $requisition_order->kode }}</td>
+                        <td>{{ $detail_ro->ro->kode }}</td>
                     </tr>
                     <tr>
                         <td>Nama Barang</td>
                         <td>:</td>
-                        <td>{{ $requisition_order->supplier_barang->barang->nama }}</td>
+                        <td>{{ $detail_ro->supplier_barang->barang->nama }}</td>
                     </tr>
                     <tr>
                         <td>Supplier</td>
                         <td>:</td>
-                        <td>{{ $requisition_order->supplier_barang->supplier->nama }}</td>
+                        <td>{{ $detail_ro->supplier_barang->supplier->nama }}</td>
+                    </tr>
+                    <tr>
+                        <td>Stok Diminta</td>
+                        <td>:</td>
+                        <td>{{ $detail_ro->stok_diminta }}</td>
                     </tr>
                 </table>
             </div>
@@ -25,17 +35,10 @@
         
         {{-- Slot --}}
         <x-input
-            label="Stok yang diminta" 
-            type='number' 
-            name='stok'
-            :value="$requisition_order->supplier_barang->stok"
-            :required="true" 
-            />
-        <x-input
             label="Stok yang diterima" 
             type='number' 
-            name='stok_diterima'
-            :value="$requisition_order->stok_diterima" 
+            name='stok'
+            :value="$detail_ro->supplier_barang->stok"
             :required="true" 
             />
 

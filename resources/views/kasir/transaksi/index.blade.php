@@ -37,12 +37,12 @@
                     <td>Rp {{ number_format($transaksi->total, '2', ',', '.') }}</td>
                     <td>{{ $transaksi->user->nama }}</td>
                     <td align="center" class="action">
-                        <form method="POST" action="{{ route('transaksi.destroy', compact('transaksi')) }}">
+                        <form method="POST" action="{{ route('kasir.transaksi.destroy', compact('transaksi')) }}">
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('Yakin ingin menghapus?')" id="delete"><i class="fa-solid fa-trash"></i>Hapus</button>
                         </form>
-                        <a href="{{ route('detail-transaksi.index', compact('transaksi')) }}" id="info"><i class="fa-solid fa-eye"></i>Detail</a>
+                        <a href="{{ route('kasir.detail-transaksi.index', compact('transaksi')) }}" id="info"><i class="fa-solid fa-eye"></i>Detail</a>
                     </td>
                 </tr>
                 @endforeach

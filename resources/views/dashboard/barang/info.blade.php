@@ -11,13 +11,11 @@
                         <td>:</td>
                         <td>{{ $barang->kode }}</td>
                     </tr>
-                    @if ($barang->status == 'Telah Dikirim')
                     <tr>
                         <td>Lokasi Barang</td>
                         <td>:</td>
                         <td>[<a href="{{ route('barang.index', ['gudang' => $barang->gudang]) }}" id="info">{{ $barang->gudang->kode }}</a>]</td>
                     </tr>
-                    @endif
                     <tr>
                         <td>Merek</td>
                         <td>:</td>
@@ -33,7 +31,7 @@
                         <td>:</td>
                         <td>{{ $barang->deskripsi }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Status</td>
                         <td>:</td>
                         <td style="color: 
@@ -46,7 +44,7 @@
                             @endif
                             "
                         >{{ $barang->status }}</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td colspan="3">
                             <h1 class="stok">Stok Tersedia {{ $barang->supplier_barangs->sum('stok') - $barang->detail_transaksis->sum('jumlah') }}</h1>

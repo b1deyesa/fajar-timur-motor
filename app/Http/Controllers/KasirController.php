@@ -28,7 +28,7 @@ class KasirController extends Controller
     public function invoice($id)
     {
         $transaksi = Transaksi::where('id', $id)->first();
-        return view('kasir.invoice', [
+        return view('kasir.info-invoice', [
             'transaksi' => $transaksi
         ]);
     }

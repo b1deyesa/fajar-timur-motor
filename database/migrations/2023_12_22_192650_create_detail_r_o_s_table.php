@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requisition_orders', function (Blueprint $table) {
+        Schema::create('detail_r_o_s', function (Blueprint $table) {
             $table->id();
-            $table->char('kode', 9)->unique();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('r_o_id')->constrained('r_o_s')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('supplier_barang_id')->constrained('supplier_barangs')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('stok_diterima')->default(0);
+            $table->enum('status', ['Selesai', 'Dalam Proses', 'Dibatalkan'])->default('Dalam Proses');
+            $table->string('stok_diminta')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requisition_orders');
+        Schema::dropIfExists('detail_r_o_s');
     }
 };

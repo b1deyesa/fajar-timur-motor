@@ -11,6 +11,7 @@ use App\Models\SupplierBarang;
 use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Database\Eloquent\Builder;
 
 class BarangController extends Controller
 {
@@ -20,6 +21,9 @@ class BarangController extends Controller
     public function index(Gudang $gudang)
     {
         $barangs = Barang::where('gudang_id', $gudang->id)->orderBy('id', 'desc')->get();
+        // $barangs = Barang::whereHas('supplier_barangs', function (Builder $query) {
+        //     $query->where('stok', '>', '0');
+        // })->get();
         
         return view('dashboard.barang.index', [
             'barangs' => $barangs,
@@ -107,7 +111,7 @@ class BarangController extends Controller
     public function info(Request $request)
     {
         $barangs = Barang::find($request->barang);
-
+        
         return view('dashboard.barang.info', [
             'barangs' => $barangs
         ]);

@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\RO;
 use App\Models\SupplierBarang;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RequisitionOrder>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DetailRO>
  */
-class RequisitionOrderFactory extends Factory
+class DetailROFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,11 @@ class RequisitionOrderFactory extends Factory
      */
     public function definition(): array
     {
-        static $count = 1;
         return [
-            'kode' => 'REQ-' . sprintf('%05d', $count++),
-            'user_id' => User::all()->random()->id,
+            'r_o_id' => RO::all()->random()->id,
             'supplier_barang_id' => SupplierBarang::all()->random()->id,
+            'status' => fake()->randomElement(['Dalam Proses', 'Selesai', 'Dibatalkan']),
+            'stok_diminta' => rand(10, 100)
         ];
     }
 }

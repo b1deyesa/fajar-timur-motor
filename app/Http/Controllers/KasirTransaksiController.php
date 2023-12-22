@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KasirTransaksiController extends Controller
 {
@@ -62,6 +64,15 @@ class KasirTransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        //
+        // Delete data
+        $transaksi->delete();
+        
+        // Log
+        Log::create([
+            'user_id' => Auth::id(),
+            'task' => 'Hapus Transaksi ('. $transaksi->kode .')'
+        ]);
+        
+        return redirect()->route('kasir.transaksi.index')->with('message','Transaksi ('. $transaksi->kode .') Berhasil di Hapus');
     }
 }

@@ -35,17 +35,17 @@
                                 <small>> Cek Detail</small>
                             </label>
                         </a>
-                        <a href="{{ route('requisition-order.index') }}" class="button">
-                            <i class="fa-regular fa-hourglass-half"></i>
-                            <label>
-                                <p><u>{{ $total_requisition_order }}</u> RO</p>
-                                <small>> Cek Detail</small>
-                            </label>
-                        </a>
                         <a href="{{ route('transaksi.index') }}" class="button">
                             <i class="fa-solid fa-dollar-sign"></i>
                             <label>
                                 <p><u>{{ $total_transaksi }}</u> Transaksi</p>
+                                <small>> Cek Detail</small>
+                            </label>
+                        </a>
+                        <a href="{{ route('ro.index') }}" class="button">
+                            <i class="fa-regular fa-hourglass-half"></i>
+                            <label>
+                                <p><u></u> RO</p>
                                 <small>> Cek Detail</small>
                             </label>
                         </a>

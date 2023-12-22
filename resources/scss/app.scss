@@ -517,9 +517,18 @@ body {
   width: 80em;
   margin: auto;
 }
+.kasir .detail-transaksi {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 80em;
+  margin: auto;
+
+}
 .kasir .back {
   display: flex;
   justify-content: end;
+  gap: .5em;
   width: 100%;
   margin: 2em 0;
 }

@@ -1,6 +1,7 @@
 <x-kasir>
     <section class="info-invoice">
         <span class="back">
+            <a href="{{ route('kasir.detail-transaksi.index', compact('transaksi')) }}" class="button">Detail</a>
             <a href="{{ route('kasir.index') }}" class="button">Kembali</a>
         </span>
         @empty($transaksi)
@@ -13,7 +14,7 @@
                     <button type="button" class="info" onclick="printPageArea('printableArea')">Print</button>
                 </div>
                 <div id="printableArea">
-                    <x-invoice :transaksi="$transaksi" :title="['BON ASLI', 'BON COPY']/>
+                    <x-invoice :transaksi="$transaksi" :title="['BON ASLI', 'BON COPY']" />
                 </div>
             </div>
         </div>

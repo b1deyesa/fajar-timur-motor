@@ -205,6 +205,7 @@ nav .container a:nth-child(3)::after {
   display: flex;
   align-items: start;
   justify-content: center;
+  width: 100%;
   min-height: 84vh;
   padding: 4em;
 }
@@ -225,7 +226,6 @@ nav .container a:nth-child(3)::after {
 .table .container .heading p {
   font-weight: bold;
 }
-
 .table .container hr {
   width: 100%;
 }
@@ -359,6 +359,9 @@ nav .container a:nth-child(3)::after {
   gap: 1em;
 }
 .edit .container .content .button .detail {
+  width: 100%;
+}
+.edit .container .content .button .detail table {
   width: 100%;
 }
 .edit .container .content .button .detail table td {

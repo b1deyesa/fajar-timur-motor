@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Barang;
+use App\Models\RO;
+use App\Models\SupplierBarang;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Supplier extends Model
 {
@@ -17,5 +17,10 @@ class Supplier extends Model
     public function supplier_barangs(): HasMany
     {
         return $this->hasMany(SupplierBarang::class);
+    }
+
+    public function ros(): HasMany
+    {
+        return $this->hasMany(RO::class);
     }
 }
